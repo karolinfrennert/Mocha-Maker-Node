@@ -11,34 +11,34 @@ const rl = readline.createInterface({
 });
 
 // Create questions for STDIN Input from console.
-const menuQ = () => {
+const menuQ = (): Promise<unknown> => {
   return new Promise((resolve, reject) => {
     // (readable, writeable from readline interface)
-    rl.question("Your choice: ", (answer) => {
+    rl.question("Your choice: ", (answer: unknown): void => {
       resolve(answer);
     });
   });
 };
 
-const milkQ = () => {
+const milkQ = (): Promise<unknown> => {
   return new Promise((resolve, reject) => {
-    rl.question("How many cups of milk to add? ", (answer) => {
+    rl.question("How many cups of milk to add? ", (answer: unknown): void => {
       resolve(answer);
     });
   });
 };
 
-const espressoQ = () => {
+const espressoQ = (): Promise<unknown> => {
   return new Promise((resolve, reject) => {
-    rl.question("How many shots of espresso to add? ", (answer) => {
+    rl.question("How many shots of espresso to add? ", (answer: unknown) => {
       resolve(answer);
     });
   });
 };
 
-const peppermintQ = () => {
+const peppermintQ = (): Promise<unknown> => {
   return new Promise((resolve, reject) => {
-    rl.question("How many shots of peppermint to add? ", (answer) => {
+    rl.question("How many shots of peppermint to add? ", (answer: unknown) => {
       resolve(answer);
     });
   });
