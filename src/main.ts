@@ -46,9 +46,9 @@ const peppermintQ = (): Promise<unknown> => {
 
 // Create parent class Mocha
 class Mocha {
-  milk;
-  shot;
-  chocolateType;
+  milk: number;
+  shot: number;
+  chocolateType: string;
 
   constructor() {
     this.milk = 1;
@@ -56,7 +56,7 @@ class Mocha {
     this.chocolateType = "dark";
   }
   // list the ingredients of the mocha
-  prepare() {
+  prepare(): void {
     console.log("Your", this.chocolateType, " Chocolate Mocha Ingredients:");
     console.log(this.chocolateType, " chocolate");
     console.log("Cups of milk: ", this.milk);
@@ -75,14 +75,14 @@ class DarkChocolateMocha extends Mocha {
 // inherits from Mocha
 class PeppermintMocha extends Mocha {
   // add peppermint property
-  peppermintSyrup;
+  peppermintSyrup: number;
   constructor() {
     // include super to pull in parent constructor
     super();
     this.peppermintSyrup = 1;
   }
   // Overrides Mocha prepare with additional statements
-  prepare() {
+  prepare(): void {
     console.log("Your Peppermint Mocha Ingredients:");
     console.log("Dark chocolate");
     console.log("Cups of milk: ", this.milk);
@@ -92,7 +92,7 @@ class PeppermintMocha extends Mocha {
 }
 
 // display menu and return selected menu item
-const showMenu = async () => {
+const showMenu = async (): Promise<number> => {
   console.log(
     "Select Mocha from menu: \n",
     "1: Create White Chocolate Mocha \n",
@@ -101,7 +101,7 @@ const showMenu = async () => {
     "0: Exit\n"
   );
   const qMenu = await menuQ();
-  return qMenu;
+  return qMenu as number;
 };
 
 // User questions
