@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -50,15 +49,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
 // Import readline module for getting input from console
 // Find more here: https://nodejs.org/api/readline.html#readline_readline
-var readline_1 = __importDefault(require("readline"));
+import readline from "readline";
 // define question/output interface
-var rl = readline_1.default.createInterface({
+var rl = readline.createInterface({
     // readable stream
     input: process.stdin,
     // writeable stream
@@ -68,30 +63,50 @@ var rl = readline_1.default.createInterface({
 var menuQ = function () {
     return new Promise(function (resolve, reject) {
         // (readable, writeable from readline interface)
-        rl.question("Your choice: ", function (answer) {
-            resolve(answer);
-        });
+        try {
+            rl.question("Your choice: ", function (answer) {
+                resolve(answer);
+            });
+        }
+        catch (error) {
+            reject();
+        }
     });
 };
 var milkQ = function () {
     return new Promise(function (resolve, reject) {
-        rl.question("How many cups of milk to add? ", function (answer) {
-            resolve(answer);
-        });
+        try {
+            rl.question("How many cups of milk to add? ", function (answer) {
+                resolve(answer);
+            });
+        }
+        catch (error) {
+            reject();
+        }
     });
 };
 var espressoQ = function () {
     return new Promise(function (resolve, reject) {
-        rl.question("How many shots of espresso to add? ", function (answer) {
-            resolve(answer);
-        });
+        try {
+            rl.question("How many shots of espresso to add? ", function (answer) {
+                resolve(answer);
+            });
+        }
+        catch (error) {
+            reject();
+        }
     });
 };
 var peppermintQ = function () {
     return new Promise(function (resolve, reject) {
-        rl.question("How many shots of peppermint to add? ", function (answer) {
-            resolve(answer);
-        });
+        try {
+            rl.question("How many shots of peppermint to add? ", function (answer) {
+                resolve(answer);
+            });
+        }
+        catch (error) {
+            reject();
+        }
     });
 };
 // Create parent class Mocha
@@ -171,16 +186,16 @@ var userOptions = function (mochaObject) { return __awaiter(void 0, void 0, void
         switch (_a.label) {
             case 0: return [4 /*yield*/, milkQ()];
             case 1:
-                milkPicked = _a.sent();
+                milkPicked = (_a.sent());
                 milkChoice = parseInt(milkPicked);
                 return [4 /*yield*/, espressoQ()];
             case 2:
-                espPicked = _a.sent();
+                espPicked = (_a.sent());
                 espChoice = parseInt(espPicked);
                 if (!(mochaObject instanceof PeppermintMocha)) return [3 /*break*/, 4];
                 return [4 /*yield*/, peppermintQ()];
             case 3:
-                pepPicked = _a.sent();
+                pepPicked = (_a.sent());
                 pepChoice = parseInt(pepPicked);
                 mochaObject.peppermintSyrup = pepChoice;
                 _a.label = 4;
@@ -200,7 +215,7 @@ var main = function () {
             switch (_b.label) {
                 case 0: return [4 /*yield*/, showMenu()];
                 case 1:
-                    optionPicked = _b.sent();
+                    optionPicked = (_b.sent());
                     menuChoice = parseInt(optionPicked);
                     _a = menuChoice;
                     switch (_a) {
